@@ -2,15 +2,29 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 import usePagination from './usePagination';
 import { Pagination } from '@mui/material';
+import axios from 'axios';
 
 function App() {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error,setError] = useState(null);
+  
   useEffect(() => {
-      fetch('http://malih-auth.ap-southeast-2.elasticbeanstalk.com/campaign/getAllUploadedEmails/listId/480')
-      .then(res => {return res.json();})
-      .then(data => { setData(data); })
-  },[])  
-
+      const getData = async () =>{
+        try{
+          const response = await axios.get('http://malih-auth.ap-southeast-2.elasticbeanstalk.com/campaign/getAllUploadedEmails/listId/480');
+          setData(response.data);
+          setError(null);
+        }catch (err) {
+          setError(err.message);
+          setData(null);
+        }finally {
+          setLoading(false);
+        }
+      };
+      getData();
+  },[]);
+  
   let [page, setPage] = useState(1);
   const perPage = 25;
 
