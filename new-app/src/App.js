@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import usePagination from './usePagination';
-import { Pagination } from '@mui/material';
+import { Pagination} from '@mui/material';
 import axios from 'axios';
+import FormDialog from './component/dialog';
+import MaterialUiForm from './component/form';
 
 function App() {
   const [data, setData] = useState([]);
@@ -66,15 +68,20 @@ function App() {
           )
         })}
       </table>
+      <FormDialog title ="Add New Customer">
+        <MaterialUiForm />
+      </FormDialog>
+      
       <Pagination 
         count ={count}
         size = "large"
         page = {page}
-        color='secondary'
         variant = "outlined"
         onChange = {handleChange} 
         showFirstButton showLastButton/>
+
     </div>
+    
   );
 }
 

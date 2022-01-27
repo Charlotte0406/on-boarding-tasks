@@ -20,15 +20,14 @@ th {
   background-color: #f1356d;
   color: white;
 }
-button {
-  border: 1px solid #f1356d;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  background-color: white;
-}
-button:hover{
-  background-color: #f1356d;
-  color: white;
-}
+.fab {
+  margin: 0px;
+  top: auto;
+  right: 10px;
+  bottom: 20px;
+  left: auto;
+  float: right;
+};
+
+
 
