@@ -68,6 +68,7 @@ function App() {
           )
         })}
       </table>
+
       <FormDialog title ="Add New Customer">
         <MaterialUiForm />
       </FormDialog>

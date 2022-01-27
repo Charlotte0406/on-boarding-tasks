@@ -5,7 +5,6 @@ import { Button, TextField, InputAdornment, Divider} from '@mui/material';
 import { AccountCircle, Email, Home, Phone, Work} from "@mui/icons-material"
 import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
-import { addUser, userSelector, clearState } from "../feature/addReducer";
 
 
 const required = value => value ? undefined : 'Required'
@@ -33,13 +32,14 @@ const renderTextField = ({
   /> 
   )
 const MaterialUiForm = (props) => {
-    const { handleSubmit,pristine, handleCancelClick, submitting } = props
+    const user =useSelector((state) => state.user.value);
+    const { handleSubmit, pristine, handleCancelClick, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
         <Field 
         style={{marginBottom: '10px'} }
         fullWidth
-        name="addUser.name"
+        name={user.name}
         validate = {[required]}
         component={renderTextField}
         label="Full Name"
@@ -51,7 +51,7 @@ const MaterialUiForm = (props) => {
         <Field
         fullWidth
         style={{marginBottom: '10px'} }
-        name="addUser.email" 
+        name={user.email}
         component={renderTextField} 
         label="Email" 
         validate={[required, email]}
@@ -63,7 +63,7 @@ const MaterialUiForm = (props) => {
         <Field
         style={{marginBottom: '10px'} }
         fullWidth
-        name="addUser.adress" 
+        name="adress" 
         component={renderTextField} 
         label="Home Address" 
         InputProps={{
@@ -73,7 +73,7 @@ const MaterialUiForm = (props) => {
             </InputAdornment>),}}variant="outlined"/>
         <Field
         style={{width:"49%"}}
-        name="addUser.phoneNumber" 
+        name="phoneNumber" 
         component={renderTextField} 
         label="Phone Number" 
         InputProps={{
@@ -83,7 +83,7 @@ const MaterialUiForm = (props) => {
             </InputAdornment>),}}variant="outlined"/>
         <Field 
         style={{float:"right", width:"49%"}}
-        name="addUser.jobTitle" 
+        name="jobTitle" 
         component={renderTextField} 
         label="Job Title" 
         InputProps={{

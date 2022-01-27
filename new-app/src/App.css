@@ -29,5 +29,16 @@ th {
   float: right;
 };
 
+button {
+  border: 1px solid #f1356d;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: white;
+}
+button:hover{
+  background-color: #f1356d;
+  color: white;
+}
 
 
