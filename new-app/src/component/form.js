@@ -101,8 +101,8 @@ const MaterialUiForm = (props) => {
             style={{backgroundColor: 'grey', color:"white"}}>Cancel</Button>
             <Button 
             variant = "contained" 
-            onClick={handleSubmit}
-            method ="POST"
+            type="submit" 
+            disabled={props.submitting || props.pristine}            
             style={{ backgroundColor: '#f1356d', float: "right", color:"white"}}>
             Submit</Button>    
       </div>
@@ -111,5 +111,5 @@ const MaterialUiForm = (props) => {
 }
 
 export default reduxForm({
-    form: 'MaterialUi' // a unique identifier for this form
+    form: 'MaterialUiForm' // a unique identifier for this form
   })(MaterialUiForm)

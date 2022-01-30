@@ -1,15 +1,12 @@
-import { createStore} from "redux";
-// import { reducer as formReducer } from "redux-form";
+import { reducer as formReducer } from "redux-form";
+import contactReducer from "./slicers/contactSlice";
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./feature/addReducer";
 
-
-
-
-export const store =  configureStore({
+const store = configureStore({
     reducer: {
-        user: userReducer,
+        contact: contactReducer,
+        form: formReducer,
     },
 });
 
-// export default createStore(rootReducer);
+export default store;
